@@ -42,6 +42,11 @@ onUserSendMessage = () => {
 }
 
 function sendUserMessage(text, callback) {
+    $.get('https://evrwg36k9k.execute-api.us-east-1.amazonaws.com/Stage1/search', {
+        chatText: text
+    }, (output) => {
+        callback('IMAGE', output.split(" , ")[0])
+    })
     //TODO SEND USER MESSAGE TO BOT HERE
     //TODO When replycomes call the callback with replyType and replyData: callback('TEXT', 'Hello') or callback('IMAGE', 'url')
     //Reply can be of 2 types: TEXT or IMAGE.
